@@ -1,7 +1,29 @@
 # cli-tool-wake-on-lan
 Wake on Lan  (WoL) in different code 
+
+## Testing method for all cli tool.
+In Mac, the Ethernet is using `en0`
+We can do the following.
+```bash
+sudo tcpdump -i en0 udp port 9 -vv -X
+```
+to see the result like the following
+```
+tcpdump: listening on en0, link-type EN10MB (Ethernet), snapshot length 524288 bytes
+23:30:07.711620 IP (tos 0x0, ttl 64, id 58157, offset 0, flags [none], proto UDP (17), length 130)
+    172.20.10.4.49444 > broadcasthost.discard: [udp sum ok] UDP, length 102
+        0x0000:  4500 0082 e32d 0000 4011 e125 ac14 0a04  E....-..@..%....
+        0x0010:  ffff ffff c124 0009 006e 1e36 ffff ffff  .....$...n.6....
+        0x0020:  ffff aabb ccdd eeff aabb ccdd eeff aabb  ................
+        0x0030:  ccdd eeff aabb ccdd eeff aabb ccdd eeff  ................
+        0x0040:  aabb ccdd eeff aabb ccdd eeff aabb ccdd  ................
+        0x0050:  eeff aabb ccdd eeff aabb ccdd eeff aabb  ................
+        0x0060:  ccdd eeff aabb ccdd eeff aabb ccdd eeff  ................
+        0x0070:  aabb ccdd eeff aabb ccdd eeff aabb ccdd  ................
+        0x0080:  eeff                                     ..
+``````
 ## Different implmentation
-We have the implementation of Java and GCC right now. 
+We have the implementation of Java, GCC and Python right now.
 
 ## Introduction
 ### Introduction of Wake-on-LAN
